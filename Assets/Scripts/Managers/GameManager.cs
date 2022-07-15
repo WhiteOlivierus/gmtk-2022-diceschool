@@ -3,6 +3,12 @@
 public class GameManager : Singleton<GameManager>
 {
     private int levelPlayed;
+    private TimeSpan time;
+
+    public void Awake()
+    {
+        time = DateTime.Now.TimeOfDay;
+    }
 
     public void StartGame()
     {
@@ -23,6 +29,10 @@ public class GameManager : Singleton<GameManager>
 
     private void GameOver()
     {
-        throw new NotImplementedException("Game over");
+    }
+
+    public TimeSpan GetTime()
+    {
+        return DateTime.Now.TimeOfDay - time;
     }
 }
